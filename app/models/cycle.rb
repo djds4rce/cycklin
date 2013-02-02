@@ -30,6 +30,6 @@ class Cycle < ActiveRecord::Base
   end
 
   def get_image_path 
-    "#{Rails.root.to_s}/public/images/cycle/#{self.id}.jpg"
+    "/public/#{self.image}"
   end
 end
