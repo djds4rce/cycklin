@@ -1,8 +1,9 @@
 CyklIn::Application.routes.draw do
 
+  root :to => 'cycles#index'
   resources :cycles
   # This route can be invoked with purchase_url(:id => product.id)
-  
+
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
