@@ -30,40 +30,37 @@
   });
 
   $(window).sausage();
-
-
-  $('.search-tag').change(function(){
-
-    query = getQuery();
-    $.ajax({
-      url: '/cycles?page=1'+query ,
-      type: 'get',
-      dataType: 'script',
-      success: function(){
-        history.pushState(null, "", "?page=1"+query);
-      }
-    });
-
+  
+(function() {
+  var loading = false;
+  uri_query = ptq(location.href);
+  if(uri_query["search[min_price]"] && uri_query["search[max_price]"]) {
+      $(".noUiSlider").val([uri_query['search[min_price]'][0],uri_query['search[max_price]'][0]]) 
+  }
   });
+  $('.search-tag').change(function(){
+    getProducts();
+     });
 
   $(".noUiSlider").noUiSlider({
     range: [0, 150000]
     ,start: [0, 150000]
+    ,handles: 2
     ,step: 1000
     ,slide: function(){
       var values = $(this).val();
       $("span.range").text(
-        values[0] +
-        " - " +
-        values[1]
+        values[0] + " - " + values[1]
       );
+        getProducts();
     }
   });
 
   function getQuery(){
-    var brands_query = ""
-    var ages_query = ""
-    var types_query = ""
+    var brands_query = "";
+    var ages_query = "";
+    var types_query = "";
+    var max_price,min_price;
 
     $.each($('.brands:checked'),function(index,element){
       search_query =   "&search[brand][]="+element.value;
@@ -79,8 +76,13 @@
       search_query =   "&search[type][]="+element.value;
       types_query+= search_query; 
     });
+    
+    price_value = $(".noUiSlider").val()
+    max_price = "&search[max_price]="+price_value[1];
+    min_price = "&search[min_price]="+price_value[0];
+    
 
-    query = brands_query + ages_query + types_query;
+    query = brands_query + ages_query + types_query+ max_price+ min_price;
 
     return query
   }
@@ -98,7 +100,24 @@
             $('#'+item).attr('checked','checked'); 
           });
         }
-      }); 
+      });
+     if(uri_query["search[min_price]"] && uri_query["search[max_price]"]) {
+      $(".noUiSlider").val([uri_query['search[min_price]'][0],uri_query['search[max_price]'][0]]) 
+    }
     });
   })
+  
+  function getProducts(){
+  query = getQuery();
+    $.ajax({
+      url: '/cycles?page=1'+query ,
+      type: 'get',
+      dataType: 'script',
+      success: function(){
+        history.pushState(null, "", "?page=1"+query);
+      }
+    });
+  }
+
 }());
+

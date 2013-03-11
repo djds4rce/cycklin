@@ -29,6 +29,7 @@ end
 gem 'jquery-rails'
 gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
+gem 'jquery-ui-rails'
 # Use unicorn as the app server
 # gem 'unicorn'
 

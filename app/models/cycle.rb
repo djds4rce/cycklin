@@ -14,12 +14,16 @@ class Cycle < ActiveRecord::Base
   
   scope :by_age, lambda {|age| return if age.blank?
     where(age: age)}
-
+  
+  scope :by_price, lambda{|max_price, min_price| return if max_price.blank?|| min_price.blank?
+  where("price <= ? AND price >= ?",max_price, min_price)  
+  }
   def self.search params
     return Cycle if params.blank?
     Cycle.by_brand(params[:brand])
     .by_type(params[:type])
     .by_age(params[:age])
+    .by_price(params[:max_price], params[:min_price])
   end
 
   def self.scrape
