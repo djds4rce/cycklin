@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require sausage
+//= require jquery.nouislider.min
 //= require twitter/bootstrap
+//= require URI
+//= require sausage
 //= require_tree .

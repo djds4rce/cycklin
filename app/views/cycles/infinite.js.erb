@@ -1,0 +1,7 @@
+<% unless @cycles.blank? %>
+  $("#cycle-container").append("<div class='page'><%= escape_javascript(render(@cycles)) %></div>");
+  $('#infinite-scroll').attr('data-next-page', '<%=@next_page%>')
+<% else %>
+    $('#end-of-products').show();
+    $('#infinite-scroll').detach();
+<% end %>

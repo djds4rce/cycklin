@@ -67,6 +67,8 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    masonry-rails (0.1.8)
+      rails
     mechanize (2.5.1)
       domain_name (~> 0.5, >= 0.5.1)
       mime-types (~> 1.17, >= 1.17.2)
@@ -85,7 +87,11 @@ GEM
     nokogiri (1.5.5)
     ntlm-http (0.1.1)
     pg (0.14.1)
+    pg_array_parser (0.0.8)
     polyglot (0.3.3)
+    postgres_ext (0.1.0)
+      activerecord (~> 3.2.0)
+      pg_array_parser (~> 0.0.8)
     pry (0.9.10)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -144,6 +150,7 @@ GEM
     unf (0.0.5)
       unf_ext
     unf_ext (0.0.5)
+    uri-js-rails (1.7.4)
     webrobots (0.0.13)
 
 PLATFORMS
@@ -156,12 +163,15 @@ DEPENDENCIES
   jquery-rails
   kaminari
   less-rails
+  masonry-rails
   mechanize
   mini_magick
   pg
+  postgres_ext
   pry
   rails (= 3.2.8)
   sass-rails (~> 3.2.3)
   therubyracer
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
+  uri-js-rails

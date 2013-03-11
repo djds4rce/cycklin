@@ -1,5 +1,10 @@
-<div class='row cycle-container'>
-  <div class='page'>
+<div class='row list' id='cycle-container'>
+  <div id='page'>
     <%=render @cycles %>
   </div>
+  <% unless @cycles.blank? %>
+    <span id="infinite-scroll" data-next-page='<%= @next_page %>'></div>
+<% end %>
+  <div style='display:none;' id='end-of-products'><p>Thats all the Products we have got</div>
+  <div style='display:none;' id='no-products'><p>Sorry that search Did not yield any products</div>
 </div>

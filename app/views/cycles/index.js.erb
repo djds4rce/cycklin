@@ -1,1 +1,11 @@
-$("#cylce-container").append("<div class='page'><%= escape_javascript(render(@cycles)) %></div>");
+<% if @cycles.blank? %>
+    $('#no-products').show();
+  $("#cycle-container").html("");
+<% else %>
+    $('#end-of-products').hide();
+  $('#no-products').hide();
+  $("#cycle-container").html("<div class='page'><%= escape_javascript(render(@cycles)) %></div>");
+  <% unless @cycles.last_page? %>
+    $("#cycle-container").append("<div id='infinite-scroll' data-next-page='<%= @next_page %>'></div>");
+  <% end %>
+<% end %>

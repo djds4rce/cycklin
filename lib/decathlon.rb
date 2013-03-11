@@ -37,28 +37,27 @@ module Decathlon
     item_hash = {}
     item_hash[:age] = params[:desc]["age_range"].strip.downcase 
     begin
-      item_hash[:sizes] = params[:desc]["size"].strip
       item_hash[:frame] = params[:desc]["frame"].strip
       item_hash[:suspension] = params[:desc]["suspension"].strip
     rescue
     end
-      item_hash[:brand] = "dechatlon"
-      item_hash[:price] = page.css(".t-price").first.text.split(":").last.strip
-      item_hash[:cycle_type] = params[:type]
-      item_hash[:url] = params[:url]
-      item_hash[:name] = page.css(".product_title").first.text.strip
-      item_hash[:image] = page.css(".product-image img").first["src"]
-      item_hash
-    end
-
-
-    def self.get_product_description_hash page
-      desc = {}
-      page.css(".prod-description4").each do |feature|
-        split_feature = feature.text.split(":")
-        desc[split_feature[0].strip.scrape_underscore] = split_feature[1]
-      end
-      desc
-    end
-
+    item_hash[:brand] = "dechatlon"
+    item_hash[:price] = page.css(".t-price").first.text.split(":").last.strip.gsub(",","")
+    item_hash[:cycle_type] = params[:type]
+    item_hash[:url] = params[:url]
+    item_hash[:name] = page.css(".product_title").first.text.strip
+    item_hash[:image] = page.css(".product-image img").first["src"]
+    item_hash
   end
+
+
+  def self.get_product_description_hash page
+    desc = {}
+    page.css(".prod-description4").each do |feature|
+      split_feature = feature.text.split(":")
+      desc[split_feature[0].strip.scrape_underscore] = split_feature[1]
+    end
+    desc
+  end
+
+end

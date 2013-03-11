@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121018194956) do
+ActiveRecord::Schema.define(:version => 20130202150134) do
 
   create_table "cycles", :force => true do |t|
     t.datetime "created_at",       :null => false
@@ -22,13 +22,13 @@ ActiveRecord::Schema.define(:version => 20121018194956) do
     t.string   "url"
     t.string   "brand"
     t.string   "age"
-    t.string   "price"
+    t.integer  "price"
     t.string   "cycle_type"
-    t.string   "sizes"
     t.string   "frame"
     t.string   "front_suspension"
     t.string   "suspension"
     t.string   "rear_suspension"
+    t.integer  "sizes",                            :array => true
   end
 
 end

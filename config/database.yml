@@ -18,7 +18,7 @@ development:
   host: localhost
   database: cyklin_development
   pool: 5
-  username: dev
+  username: postgres
   password: 123
 
   # Connect on a TCP socket. Omitted by default since the client uses a
