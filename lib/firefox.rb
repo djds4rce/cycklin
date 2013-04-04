@@ -54,6 +54,7 @@ module Firefox
     item_hash = {}
     item_hash[:cycle_type] = params[:type]
     item_hash[:brand] = params[:brand] || "firefox"
+    item_hash[:brand] = "firefox" if item_hash[:brand].match("kids")
     item_hash[:age] = params[:age].nil? ? "adult" : "junior"
     item_hash[:price] = item_page.css(".mrp_text").first.text.strip.split("INR")[1].gsub(",","")
     item_hash[:url] = "http://firefoxbikes.com/"+params[:url]
@@ -80,14 +81,14 @@ module Firefox
   def self.get_type menu_text
     case menu_text
 
-    when "FULL SUSPENSION"
-      return "mountain"
-
-    when "HARDTAIL"
-      return "mountain"
-
+    when "FULL SUSPENSION", "HARDTAIL","TREK","GARY FISHER"
+      return "Mountain"
+    when "CRUISER", "ROAD"
+      return "Road"
+    when "TERN","HYBRID"
+      return "Hybrid"
     else
-      return menu_text.downcase
+      return menu_text
     end
   end
 

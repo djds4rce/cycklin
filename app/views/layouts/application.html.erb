@@ -39,17 +39,13 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <a class="brand" href="#">CyklIn</a>
       <div class="container nav-collapse">
-        <ul class="nav">
-          <li><%= link_to "Link1", "/path1"  %></li>
-          <li><%= link_to "Link2", "/path2"  %></li>
-          <li><%= link_to "Link3", "/path3"  %></li>
+        <a class="brand" href="#"><i class="icon-cogs"></i> CyklIn</a>
+        <ul class='nav'>
+          <li class='selected'> <a href='#'>Home</a></li>
+          <li> 
+          <a href='#'>About</a></li>
+          <li> <a href='#'>Contact</a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
@@ -57,55 +53,43 @@
 </div>
 
 <div class="container-fluid">
-  <div class="row">
-    <div class="span3">
-      <div class="sidebar-nav">
-        <h4> Search</h4>
-        <div class='row'>
-          <div class='well span2'>
-            <h5>Brands</h5>
-            <ul>
-              <% @brands.each do |brand| %>
-                <li><%= check_box_tag(brand[0].to_sym,brand[0],checkbox_type(params[:search],"brand",brand[0]),:class=>'search-tag brands') %> <%=label_tag(brand[0].to_sym, "#{brand[0].titleize}(#{brand[1]})") %> </li>
-            <% end %>
-            </ul>
-          </div>
-          <div class='well span2'>
-            <h5>Type</h5>
-            <ul>
-              <% @types.each do |type| %>
-                <li><%= check_box_tag(type[0].to_sym,type[0],checkbox_type(params[:search],"type",type[0]),:class=>'search-tag types') %> <%=label_tag(type[0].to_sym,"#{type[0].titleize}(#{type[1]})") %> </li>
-            <% end %>
-            </ul>
-          </div>  
-          <div class='well span2'>
-            <h5>Age</h5>
-            <ul>
-              <% @ages.each do |age| %>
-                <li><%= check_box_tag(age[0].to_sym,age[0],checkbox_type(params[:search],"age",age[0]),:class=>'search-tag ages') %> <%=label_tag(age[0].to_sym, "#{age[0].titleize}(#{age[1]})") %> </li>
-            <% end %>
-            </ul>
+  <div class="sidebar-nav">
+    <h4> Search</h4>
+    <div class='row'>
+      <div class='well span2'>
+        <h5>Brands</h5>
+        <ul class='unstyled'>
+          <% @brands.each do |brand| %>
+            <li><%= check_box_tag(brand[0].to_sym,brand[0],checkbox_type(params[:search],"brand",brand[0]),:class=>'search-tag brands') %> <%=label_tag(brand[0].to_sym, "#{brand[0].titleize}(#{brand[1]})") %> </li>
+        <% end %>
+        </ul>
+      </div>
+      <div class='well span2'>
+        <h5>Type</h5>
+        <ul class='unstyled'> 
+          <% @types.each do |type| %>
+            <li><%= check_box_tag(type[0].to_sym,type[0],checkbox_type(params[:search],"type",type[0]),:class=>'search-tag types') %> <%=label_tag(type[0].to_sym,"#{type[0]}(#{type[1]})") %> </li>
+        <% end %>
+        </ul>
+      </div>  
+      <div class='well span2'>
+        <h5> Price</h5>
 
-          </div>
-          <div class='well span2'>
-            <h5> Price</h5>
-
-            <div class="noUiSlider"></div>
-            <span class='range'></span>
-          </div>  
-        </div>
-      </div><!--/.well -->
+        <div class="noUiSlider"></div>
+        <span class='range'></span>
+      </div>  
+    </div>
     </div><!--/span-->
 
-    <div class="span9">
+  <div class="row main-row">
       <%= bootstrap_flash %>
       <%= yield %>
-    </div>
   </div><!--/row-->
-
-  <footer>
-    <p>&copy; Company 2012</p>
-  </footer>
+  <div class='footer-div'>
+    <footer class='page-footer'>
+      <p>&copy; Daya 2012. Images and data belong to respective parent sites.</p>
+    </footer>
+  </div>
 
 </div> <!-- /container -->
 

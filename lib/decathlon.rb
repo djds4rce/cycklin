@@ -43,7 +43,7 @@ module Decathlon
     end
     item_hash[:brand] = "dechatlon"
     item_hash[:price] = page.css(".t-price").first.text.split(":").last.strip.gsub(",","")
-    item_hash[:cycle_type] = params[:type]
+    item_hash[:cycle_type] = get_type(params[:type])
     item_hash[:url] = params[:url]
     item_hash[:name] = page.css(".product_title").first.text.strip
     item_hash[:image] = page.css(".product-image img").first["src"]
@@ -58,6 +58,21 @@ module Decathlon
       desc[split_feature[0].strip.scrape_underscore] = split_feature[1]
     end
     desc
+  end
+
+  def self.get_type type
+    case type
+    when "mountain","trekking" 
+      return "MTB"
+    when "kids"
+      return "Kids"
+    when "road","city"
+      return "Road"
+    when "bmx"
+      return "BMX"
+    when "folding"
+      return "Hybrid"
+    end   
   end
 
 end
