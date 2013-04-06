@@ -11,7 +11,6 @@ gem 'mini_magick'
 gem 'kaminari'
 gem 'masonry-rails'
 gem 'postgres_ext'
-gem 'seed_dumper'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
