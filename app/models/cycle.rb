@@ -2,7 +2,7 @@ class Cycle < ActiveRecord::Base
   include Firefox
   include Decathlon
   mount_uploader :image, ImageUploader
-  attr_accessible :age, :brand, :price, :cycle_type, :url, :name, :image, :flag, :front_suspension, :rear_suspension, :suspension, :frame, :sizes
+  attr_accessible :id, :age, :brand, :price, :cycle_type, :url, :name, :image, :flag, :front_suspension, :rear_suspension, :suspension, :frame, :sizes
   
   default_scope where(:flag=>true)
  
@@ -30,6 +30,7 @@ class Cycle < ActiveRecord::Base
     Cycle.update_all('flag = false')
     Cycle.create_data(Firefox.scrape)
     Cycle.create_data(Decathlon.scrape)
+    Cycle.create_data(TrackAndTrail.scrape)
   end
   
   def self.create_data data
