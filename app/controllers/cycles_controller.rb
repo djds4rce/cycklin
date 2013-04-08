@@ -1,7 +1,7 @@
 class CyclesController < ApplicationController
 
   def index
-    @cycles = Cycle.search(params[:search]).page(params[:page]).per(20)
+      @cycles = Cycle.search(params[:search]).page(params[:page]).per(20)
     @next_page = (params[:page].to_i||0)+1
     if params[:infinite]
       respond_to do |format|
