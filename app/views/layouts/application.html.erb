@@ -44,17 +44,17 @@
       </button>
       <a class="navbar-brand text-hide" href="#">CyklIn</a>
       <div class="nav-collapse collapse">
-        <ul class="nav">
+        <ul class="nav" id="filters">
           <li>
             <p>Brands</p>
               <% @brands.each do |brand| %>
-                <label class="btn btn-primary"><%= check_box_tag(brand[0].to_sym,brand[0],checkbox_type(params[:search],"brand",brand[0]),:class=>'search-tag brands') %> <%="#{brand[0].titleize}" %><span class="label label-info"><%="#{brand[1]}"%></span></label>
+                <a class="btn btn-primary" data-filter=".<%="#{brand[0]}" %>" href="#"><%= check_box_tag(brand[0].to_sym,brand[0],checkbox_type(params[:search],"brand",brand[0]),:class=>'search-tag brands') %> <%="#{brand[0].titleize}" %><span class="label label-info"><%="#{brand[1]}"%></span></a>
               <% end %>
           </li>
           <li>
             <p>Types</p>
               <% @types.each do |type| %>
-                <label class="btn btn-primary"><%= check_box_tag(type[0].to_sym,type[0],checkbox_type(params[:search],"type",type[0]),:class=>'search-tag types') %> <%="#{type[0]}" %><span class="label label-info"><%="#{type[1]}"%></span></label>
+                <a class="btn btn-primary" data-filter=".<%="#{type[0]}" %>"  href="#"><%= check_box_tag(type[0].to_sym,type[0],checkbox_type(params[:search],"type",type[0]),:class=>'search-tag types') %> <%="#{type[0]}" %><span class="label label-info"><%="#{type[1]}"%></span></a>
               <% end %>
               <p>Price</p>
           <li>

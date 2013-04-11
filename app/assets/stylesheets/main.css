@@ -82,12 +82,14 @@ margin: 20px 0;
 .nav input{
     display: none;
 }
-.nav label{
+.navbar .nav > li > a{
     position: relative;
     margin-right: 10px;
     border-radius: 30px;
     margin-bottom: 10px;
     padding: 2px 35px 2px 10px;
+    color: #fff;
+    display: inline-block;
 }
 
 /* --------------------------------------------------
