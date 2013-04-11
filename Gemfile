@@ -9,13 +9,10 @@ gem 'mechanize'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'kaminari'
-gem 'masonry-rails'
 gem 'postgres_ext'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'uri-js-rails'
-  gem 'twitter-bootstrap-rails'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
@@ -26,7 +23,6 @@ group :assets do
   gem 'less-rails'
 end
 
-gem 'jquery-rails'
 gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
 gem 'jquery-ui-rails'

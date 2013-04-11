@@ -10,11 +10,11 @@
 // WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
 // GO AFTER THE REQUIRES BELOW.
 //
-//= require jquery
-//= require jquery_ujs
-//= require jquery.ui.all
-//= require jquery.nouislider.min
-//= require twitter/bootstrap
-//= require URI
-//= require sausage
-//= require_tree .
+//= require vendor/jquery
+//= require vendor/bootstrap-affix
+//= require vendor/bootstrap-button
+//= require vendor/bootstrap-collapse
+//= require vendor/bootstrap-transition
+//= require vendor/jquery.isotope.min
+//= require vendor/jquery.infinitescroll.min
+//= require cycles

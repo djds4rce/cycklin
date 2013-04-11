@@ -1,82 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <head>
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><%= content_for?(:title) ? yield(:title) : "CyklIn" %></title>
-<%= csrf_meta_tags %>
+<meta name="description" content="">
+<meta name="author" content="">
 
-<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-<!--[if lt IE 9]>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
-    <![endif]-->
+<title><%= content_for?(:title) ? yield(:title) : "CyklIn" %></title>
+
+<%= csrf_meta_tags %>
 
 <%= stylesheet_link_tag "application", :media => "all" %>
 
-</head>
-<body>
 
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+  <script src="/assets/vendor/html5shiv.js"></script>
+  <script src="/assets/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Favicons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
+                <link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">
+                               <link rel="shortcut icon" href="/assets/ico/favicon.png">
+
+    <!-- Place anything custom after this. -->
+  </head>
+  <body>
+<!-- Wrap all page content here -->
+<div id="wrap">
+
+  <!-- Fixed navbar -->
+  <div class="navbar navbar-fixed-top">
     <div class="container">
-      <div class="container nav-collapse">
-        <a class="brand" href="#"><i class="icon-cogs"></i> CyklIn</a>
-        <ul class='nav'>
-          <li class='selected'> <a href='#'>Home</a></li>
-          <li> 
-          <a href='#'>About</a></li>
-          <li> <a href='#'>Contact</a></li>
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand text-hide" href="#">CyklIn</a>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li>
+            <p>Brands</p>
+              <% @brands.each do |brand| %>
+                <label class="btn btn-primary"><%= check_box_tag(brand[0].to_sym,brand[0],checkbox_type(params[:search],"brand",brand[0]),:class=>'search-tag brands') %> <%="#{brand[0].titleize}" %><span class="label label-info"><%="#{brand[1]}"%></span></label>
+              <% end %>
+          </li>
+          <li>
+            <p>Types</p>
+              <% @types.each do |type| %>
+                <label class="btn btn-primary"><%= check_box_tag(type[0].to_sym,type[0],checkbox_type(params[:search],"type",type[0]),:class=>'search-tag types') %> <%="#{type[0]}" %><span class="label label-info"><%="#{type[1]}"%></span></label>
+              <% end %>
+              <p>Price</p>
+          <li>
         </ul>
       </div><!--/.nav-collapse -->
     </div>
   </div>
-</div>
 
-<div class="container-fluid">
-  <div class="sidebar-nav">
-    <h4> Search</h4>
-    <div class='row'>
-      <div class='well span2'>
-        <h5>Brands</h5>
-        <ul class='unstyled'>
-          <% @brands.each do |brand| %>
-            <li><%= check_box_tag(brand[0].to_sym,brand[0],checkbox_type(params[:search],"brand",brand[0]),:class=>'search-tag brands') %> <%=label_tag(brand[0].to_sym, "#{brand[0].titleize}(#{brand[1]})") %> </li>
-        <% end %>
-        </ul>
-      </div>
-      <div class='well span2'>
-        <h5>Type</h5>
-        <ul class='unstyled'> 
-          <% @types.each do |type| %>
-            <li><%= check_box_tag(type[0].to_sym,type[0],checkbox_type(params[:search],"type",type[0]),:class=>'search-tag types') %> <%=label_tag(type[0].to_sym,"#{type[0]}(#{type[1]})") %> </li>
-        <% end %>
-        </ul>
-      </div>  
-      <div class='well span2'>
-        <h5> Price</h5>
-
-        <div class="noUiSlider"></div>
-        <span class='range'></span>
-      </div>  
-    </div>
-    </div><!--/span-->
-
-  <div class="row main-row">
-      <%= yield %>
-  </div><!--/row-->
-  <div class='footer-div'>
-    <footer class='page-footer'>
-      <p>&copy; Daya 2012. Images and data belong to respective parent sites.</p>
-    </footer>
+  <!-- Begin page content -->
+  <div class="container">
+    <%= yield %>
   </div>
 
-</div> <!-- /container -->
+  <div id="push"></div>
+</div>
+
+<div id="footer">
+  <div class="container">
+    <p class="text-muted credit">&copy; Daya 2012. Images and data belong to respective parent sites.</p>
+  </div>
+</div>
 
 <!-- Javascripts
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <%= javascript_include_tag "application" %>
 
-</body>
+<!-- Analytics
+================================================== -->
+
+
+  </body>
 </html>

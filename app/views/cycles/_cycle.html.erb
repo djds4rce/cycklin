@@ -1,14 +1,15 @@
-<div class='well span4 cycle-container'>
-  <div class='row'>
-    <div class='span4'>
+<li class="isotope-item">
+  <div class="grid-cycle">
+    <a id='<%=cycle.id%>' href='<%=cycle.url%>'>
       <img src='<%= cycle.image_url %>' \>
-      <div class='span2'>
-        <p><a id='<%=cycle.id%>' href='<%=cycle.url%>'><%= cycle.name %></a></p>
-        <p><%=cycle.cycle_type %></p>
-        <p><%=cycle.brand %></p>
-        <p>Rs.<%=cycle.price %></p>
+      <div class="cycle-info">
+        <p>Name: <%= cycle.name %></p>
+        <p>Type: <%=cycle.cycle_type %></p>
+        <p>Brand: <%=cycle.brand %></p>
+        <p>Price: Rs.<%=cycle.price %></p>        
       </div>
-    </div>
+    </a>
   </div>
-</div>
+</li>
+
 
