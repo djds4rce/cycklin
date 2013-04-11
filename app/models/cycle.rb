@@ -19,11 +19,11 @@ class Cycle < ActiveRecord::Base
   where("price <= ? AND price >= ?",max_price, min_price)  
   }
   def self.search params
-    return Cycle if params.blank?
+    return Cycle.order("price asc") if params.blank?
     Cycle.by_brand(params[:brand])
     .by_type(params[:type])
     .by_age(params[:age])
-    .by_price(params[:max_price], params[:min_price])
+    .by_price(params[:max_price], params[:min_price]).order("price asc")
   end
 
   def self.scrape
