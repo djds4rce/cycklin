@@ -82,13 +82,15 @@ module Firefox
     case menu_text
 
     when "FULL SUSPENSION", "HARDTAIL","TREK","GARY FISHER"
-      return "Mountain"
+      return "MTB"
     when "CRUISER", "ROAD"
       return "Road"
     when "TERN","HYBRID"
       return "Hybrid"
-    else
+    when "BMX"
       return menu_text
+    else
+      return menu_text.capitalize
     end
   end
 

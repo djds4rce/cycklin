@@ -35,7 +35,7 @@ class Cycle < ActiveRecord::Base
   
   def self.create_data data
     data.each do |item|
-      db_item = Cycle.find_by_name(item[:name])
+      db_item = Cycle.unscoped.find_by_name(item[:name])
       item[:flag] = true
       image = item.delete(:image)
       begin
