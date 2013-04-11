@@ -1,6 +1,7 @@
 html,
 body {
   height: 100%;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 #wrap {
   min-height: 100%;
@@ -29,7 +30,13 @@ padding: 200px 15px 0;
 .container .credit {
 margin: 20px 0;
 }
-
+.navbar-fixed-top{
+  height: auto;
+    -webkit-transition: all 0.8s ease;
+     -moz-transition: all 0.8s ease;
+       -o-transition: all 0.8s ease;
+          transition: all 0.8s ease;
+}
 .navbar-brand{
     margin-left: 0;
     width: 100px;
@@ -58,6 +65,14 @@ margin: 20px 0;
         height: 106px;
         background: url('/assets/logo.png') 0 0 no-repeat;
     }
+    .hide-filters .navbar-brand{
+      margin-top: 5px;
+      margin-bottom: 5px;
+      width: 100px;
+      max-width: 100px;
+      height: 53px;
+      background: url('/assets/logo-mobile.png') 0 0 no-repeat;
+    }
 }
 
 .label{
@@ -68,6 +83,15 @@ margin: 20px 0;
     position: absolute;
     right: -1px;
     top: -1px;
+}
+.label-info,
+.label-close{
+  background-color: #fff;
+  border: 1px solid #428bca;
+  color: #666;
+}
+.label-close{
+  display: none;
 }
 .btn-group > .btn:first-child {
   border-bottom-left-radius: 0;
@@ -88,10 +112,25 @@ margin: 20px 0;
     border-radius: 30px;
     margin-bottom: 10px;
     padding: 2px 35px 2px 10px;
-    color: #fff;
+    color: #666;
+    background: #fff;
     display: inline-block;
+    font-size: 12px;
 }
-
+.navbar .nav > li > a:hover,
+.navbar .nav > li > a.active{
+    color: #fff;
+    background: #428bca;
+}
+.navbar .nav > li > a.active .label-info{
+  display: none;
+}
+.navbar .nav > li > a.active .label-close{
+    display: inline-block;
+    background-color: #5bc0de;
+    border-color: #5bc0de;
+    color: #fff;
+}
 /* --------------------------------------------------
 3 - Isotope
 -------------------------------------------------- */

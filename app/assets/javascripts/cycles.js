@@ -20,10 +20,18 @@ $(function(){
       $container.isotope( 'appended', $( newElements ) ); 
     }
   );
-  $('#filters a').click(function(){
-    var selector = $(this).attr('data-filter');
-    $container.isotope({ filter: selector });
-    return false;
-  });  
+  $('#filters').on('click', 'a', function(){
+    $(this).toggleClass('active');
 
+    //Construct new URl and make calls
+  });  
+  $(window).scroll(function() {
+    if ($(this).scrollTop() != '0'){
+      $('#filters a, #filters p').not('.active').addClass('hide');
+      $('body').addClass('hide-filters');
+    }else{
+      $('#filters a, #filters p').removeClass('hide');
+      $('body').removeClass('hide-filters');
+    }
+  });
 });
