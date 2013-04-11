@@ -41,7 +41,7 @@
         <h5>Brands</h5>
         <ul class='unstyled'>
           <% @brands.each do |brand| %>
-            <li><%= check_box_tag(brand[0].to_sym,brand[0],checkbox_type(params[:search],"brand",brand[0]),:class=>'search-tag brands') %> <%=label_tag(brand[0].to_sym, "#{brand[0].titleize}(#{brand[1]})") %> </li>
+            <li><label class="btn btn-primary"> <%= check_box_tag(brand[0].to_sym,brand[0],checkbox_type(params[:search],"brand",brand[0]),:class=>'search-tag brands') %> <%="#{brand[0].titleize}(#{brand[1]})" %></label> </li>
         <% end %>
         </ul>
       </div>
@@ -49,7 +49,7 @@
         <h5>Type</h5>
         <ul class='unstyled'> 
           <% @types.each do |type| %>
-            <li><%= check_box_tag(type[0].to_sym,type[0],checkbox_type(params[:search],"type",type[0]),:class=>'search-tag types') %> <%=label_tag(type[0].to_sym,"#{type[0]}(#{type[1]})") %> </li>
+            <li><label class="btn btn-primary"> <%= check_box_tag(type[0].to_sym,type[0],checkbox_type(params[:search],"type",type[0]),:class=>'search-tag types') %> <%="#{type[0]}(#{type[1]})" %></label> </li>
         <% end %>
         </ul>
       </div>  
