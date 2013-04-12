@@ -2,11 +2,9 @@
   <div class="grid-cycle">
     <a id='<%=cycle.id%>' href='<%=cycle.url%>'>
       <img src='<%= cycle.image_url %>' \>
-      <div class="cycle-info">
-        <p>Name: <%= cycle.name %></p>
-        <p>Type: <%=cycle.cycle_type %></p>
-        <p>Brand: <%=cycle.brand %></p>
-        <p>Price: Rs.<%=cycle.price %></p>        
+      <div class="cycle-info clearfix">
+        <p class="pull-left desc"><%=cycle.brand.titleize %>'s <%= cycle.name %>, <i><%=cycle.cycle_type %></i> bike.</p>
+        <p class="rs pull-right"><%=cycle.price %></p>        
       </div>
     </a>
   </div>

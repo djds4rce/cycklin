@@ -12,6 +12,7 @@
 <%= csrf_meta_tags %>
 
 <%= stylesheet_link_tag "application", :media => "all" %>
+<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
 
 
 
@@ -48,13 +49,13 @@
           <li>
             <p>Brands</p>
               <% @brands.each do |brand| %>
-                <a class="btn btn-primary" data-filter=".<%="#{brand[0]}" %>" href="#"><%= check_box_tag(brand[0].to_sym,brand[0],checkbox_type(params[:search],"brand",brand[0]),:class=>'search-tag brands') %> <%="#{brand[0].titleize}" %><span class="label label-info"><%="#{brand[1]}"%></span></a>
+                <a class="btn btn-primary" data-filter=".<%="#{brand[0]}" %>" href="#"><%= check_box_tag(brand[0].to_sym,brand[0],checkbox_type(params[:search],"brand",brand[0]),:class=>'search-tag brands') %> <%="#{brand[0].titleize}" %><span class="label label-info"><%="#{brand[1]}"%></span> <span class="label label-close">X</span></a>
               <% end %>
           </li>
           <li>
             <p>Types</p>
               <% @types.each do |type| %>
-                <a class="btn btn-primary" data-filter=".<%="#{type[0]}" %>"  href="#"><%= check_box_tag(type[0].to_sym,type[0],checkbox_type(params[:search],"type",type[0]),:class=>'search-tag types') %> <%="#{type[0]}" %><span class="label label-info"><%="#{type[1]}"%></span></a>
+                <a class="btn btn-primary" data-filter=".<%="#{type[0]}" %>"  href="#"><%= check_box_tag(type[0].to_sym,type[0],checkbox_type(params[:search],"type",type[0]),:class=>'search-tag types') %> <%="#{type[0]}" %><span class="label label-info"><%="#{type[1]}"%></span><span class="label label-close">X</span></a>
               <% end %>
               <p>Price</p>
           <li>
@@ -64,7 +65,7 @@
   </div>
 
   <!-- Begin page content -->
-  <div class="container">
+  <div class="container" id="cycles">
     <%= yield %>
   </div>
 
