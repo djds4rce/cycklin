@@ -52,13 +52,13 @@ module Firefox
 
   def self.get_details item_page, params = {}
     item_hash = {}
+    begin
     item_hash[:cycle_type] = params[:type]
     item_hash[:brand] = params[:brand] || "firefox"
     item_hash[:brand] = "firefox" if item_hash[:brand].match("kids")
     item_hash[:age] = params[:age].nil? ? "adult" : "junior"
     item_hash[:price] = item_page.css(".mrp_text").first.text.strip.split("INR")[1].gsub(",","")
     item_hash[:url] = "http://firefoxbikes.com/"+params[:url]
-    begin
       item_hash[:name] =  item_page.css(".product_name h2").first.text
     rescue
       return
