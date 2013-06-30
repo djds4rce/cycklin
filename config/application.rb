@@ -57,6 +57,7 @@ module CyklIn
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
 
     # Enable the asset pipeline
+    config.assets.precompile += ['application.css','application.js']
     config.assets.enabled = true
 
     # Version of your assets, change this if you want to expire all your assets
